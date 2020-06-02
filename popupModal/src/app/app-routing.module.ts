@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'login-confirmation',
+    loadChildren: () => import('./modals/login-confirmation/login-confirmation.module').then( m => m.LoginConfirmationPageModule)
+  },
 ];
 
 @NgModule({
