@@ -1,0 +1,7 @@
+{
+  "name": "popupModal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
