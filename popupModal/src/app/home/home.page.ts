@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LoginConfirmationPage } from '../modals/login-confirmation/login-confirmation.page';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  dataReturned: any;
 
-  constructor() {}
+  constructor(
+    public modalController: ModalController
+  ) { }
 
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: LoginConfirmationPage,
+    
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
+  }
 }
